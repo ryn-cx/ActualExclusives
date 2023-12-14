@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "ActualExclusives"
+version = "0.1.0"
+description = ""
+authors = ["ryn-cx <84663588+ryn-cx@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.0"
+isort = "^5.13.2"
+flake8 = "^6.1.0"
+pytest = "^7.4.3"
+pylint = "^3.0.3"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.pylint]
+disable = [
+    "C0301", # line-too-long: Black makes this redundant
+    "E1101", # no-member: Black makes thie redundant and it sometimes has false positives
+    "E0307", # invalid-str-returned: Black makes this redundant and it sometimes has false positives
+    "E0611", # invalid-str-returned: Black makes this redundant and it sometimes has false positives
+    "E0401", # import-error: Black makes this redundant and it has false positives because it does not use PYTHONPATH
+    "C0114", # missing-module-docstring: So often these are just useless, only add them when they are useful
+    "C0115", # missing-class-docstring: So often these are just useless, only add them when they are useful
+    "C0116", # missing-function-docstring: So often these are just useless, only add them when they are useful
+    "E0601", # used-before-assignment: Pylance is more reliable because Pylint does not understand "if TYPE_CHECKING:"
+]
