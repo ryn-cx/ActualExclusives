@@ -10,7 +10,7 @@ python = "^3.11"
 django = "^5.0"
 django-model-helpers = { git = "https://github.com/ryn-cx/django-model-helpers" }
 json-file = { git = "https://github.com/ryn-cx/json-file" }
-pycountry = "^23.12.11"
+virtualenvwrapper = "^4.8.4"
 
 
 [tool.poetry.group.dev.dependencies]
