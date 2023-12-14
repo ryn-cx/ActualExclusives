@@ -7,6 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+django = "^5.0"
+django-model-helpers = { git = "https://github.com/ryn-cx/django-model-helpers" }
+json-file = { git = "https://github.com/ryn-cx/json-file" }
+pycountry = "^23.12.11"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -16,6 +20,8 @@ flake8 = "^6.1.0"
 pytest = "^7.4.3"
 pylint = "^3.0.3"
 pre-commit = "^3.6.0"
+django-types = "^0.19.1"
+djlint = "^1.34.0"
 
 [build-system]
 requires = ["poetry-core"]
