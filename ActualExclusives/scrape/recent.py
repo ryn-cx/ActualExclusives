@@ -39,10 +39,10 @@ def recreate_last_scrape():
     folders = [f for f in RECENT_FOLDER.iterdir() if f.is_dir()]
     if folders:
         # Find the oldest file in oldest_folder
-        if oldest_folder := min(folders, default=None):
-            if files := list(oldest_folder.iterdir()):
-                if oldest_file := min(files, default=None):
-                    LastScrape.objects.create(datetime=oldest_file.aware_mtime())
+        if newest_folder := max(folders, default=None):
+            if files := list(newest_folder.iterdir()):
+                if newest_file := max(files, default=None):
+                    LastScrape.objects.create(datetime=newest_file.aware_mtime())
 
 
 def main():
