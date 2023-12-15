@@ -26,11 +26,14 @@ repos:
       - id: mixed-line-ending # Clean up line endings to all be the same
       - id: fix-byte-order-marker # Remove UTF-8 byte order marker
 
-  # Run black to format Python code
-  - repo: "https://github.com/psf/black"
-    rev: 22.6.0
+  # Trying to replace black with ruff
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.8
     hooks:
-      - id: black
+      # Run the linter.
+      - id: ruff
+      # Run the formatter.
+      - id: ruff-format
 
   # Run isort to sort Python imports
   - repo: https://github.com/PyCQA/isort

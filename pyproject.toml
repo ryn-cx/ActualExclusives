@@ -11,11 +11,10 @@ django = "^5.0"
 django-model-helpers = { git = "https://github.com/ryn-cx/django-model-helpers" }
 json-file = { git = "https://github.com/ryn-cx/json-file" }
 virtualenvwrapper = "^4.8.4"
+ruff = "^0.1.8"
 
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.12.0"
-isort = "^5.13.2"
 flake8 = "^6.1.0"
 pytest = "^7.4.3"
 pylint = "^3.0.3"
@@ -27,12 +26,8 @@ djlint = "^1.34.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.black]
+[tool.ruff]
 line-length = 120
-
-[tool.isort]
-profile = "black"
-line_length = 120
 
 [tool.pylint]
 disable = [
@@ -46,3 +41,4 @@ disable = [
     "C0116", # missing-function-docstring: So often these are just useless, only add them when they are useful
     "E0601", # used-before-assignment: Pylance is more reliable because Pylint does not understand "if TYPE_CHECKING:"
 ]
+
