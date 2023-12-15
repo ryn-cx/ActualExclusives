@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for game_id, game_data in games.items %}
+                <div class="col">
+                    <div class="card">
+                        <img src="{{ game_data.image }}" alt="{{ game }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="https://www.mobygames.com/game/{{ game_id }}/">{{ game_data.name }}</a>
+                            </h5>
+                            <p class="card-text">
+                                {% for console, countries in game_data.platforms.items %}
+                                    {{ console }}:
+                                    {% for country in countries %}
+                                        {{ country }}
+                                        {{ ' ' }}
+                                    {% endfor %}
+                                    <br>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

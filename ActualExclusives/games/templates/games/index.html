@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div id="empty_form" style="display:none">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">{{ formset.empty_form.as_p }}</div>
+                </div>
+            </div>
+        </div>
+        <form action="games">
+            <div class="row row-cols-1 row-cols-md-3 g-4", id="col_holder">
+                {% for form in formset.forms %}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ formset.management_form }}
+                                {% csrf_token %} {{ form.as_p }}
+                                <script>
+                                            for (var i = 0; i < 10; i++) {
+                                                // Build the ID dynamically
+                                                var platformsId = '#id_form-' + i + '-platforms';
+                                                var countriesId = '#id_form-' + i + '-countries';
+                                    
+                                                // Modify the platforms element
+                                                $(platformsId).attr('data-actions-box', 'true');
+                                                $(platformsId).attr('data-live-search', 'true');
+                                                $(platformsId).attr('multiple', 'true');
+                                                $(platformsId).selectpicker();
+                                    
+                                                // Modify the countries element
+                                                $(countriesId).attr('data-actions-box', 'true');
+                                                $(countriesId).attr('data-live-search', 'true');
+                                                $(countriesId).attr('multiple', 'true');
+                                                $(countriesId).selectpicker();
+                                            }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="button" value="Add More" id="add_more">
+            <input name="search_type" type="submit" value="And Search">
+            <input name="search_type" type="submit" value="Or Search">
+            {% comment %} <button name="or_search" type="submit" value="true">Or Search</button> {% endcomment %}
+            {% comment %} Script to add more forms {% endcomment %}
+            <script>
+                                $('#add_more').click(function() {
+                                var form_number = $('#id_form-TOTAL_FORMS').val();
+                                $('#col_holder').append($('#empty_form').html().replace(/__prefix__/g, form_number));
+                            
+                                var platforms_string = '#id_form-' + form_number + '-platforms';
+                                $(platforms_string).attr('data-actions-box', 'true');
+                                $(platforms_string).attr('data-live-search', 'true');
+                                $(platforms_string).attr('multiple', 'true');
+                                $(platforms_string).selectpicker();
+                            
+                                var countries_string = '#id_form-' + form_number + '-countries';
+                                $(countries_string).attr('data-actions-box', 'true');
+                                $(countries_string).attr('data-live-search', 'true');
+                                $(countries_string).attr('multiple', 'true');
+                                $(countries_string).selectpicker();
+                            
+                                $('#id_form-TOTAL_FORMS').val(function(i, oldval) {
+                                    return parseInt(oldval, 10) + 1;
+                                });    
+                                });
+            </script>
+        </form>
+    </div>
+{% endblock %}
