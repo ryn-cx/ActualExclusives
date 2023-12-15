@@ -120,7 +120,7 @@ def country_form(form: SelectForm, gp: QuerySet[GamePlatform]) -> QuerySet[GameP
 def form_parser(formset: BaseFormSet, search_type: str = "And Search") -> QuerySet[Game]:
     intersection_set: set[int] = set()
     union_set: set[int] = set()
-    games = Game.objects
+    games = Game.objects.none()
 
     if search_type == "And Search":
         for form in formset:
