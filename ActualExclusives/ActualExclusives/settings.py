@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-7&q943-toz)!9=15w77lz-p!1_llbdyk7$e)i6u_6^_94-&_@+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This should be all that is needed fornginx proxying
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
