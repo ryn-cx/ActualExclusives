@@ -11,7 +11,6 @@ if TYPE_CHECKING:
 
 
 def download_and_save(url: str, file_path: "ExtendedPath", params: Optional[dict[str, str | int]] = None) -> None:
-    start_time = time.time()
     if not params:
         params = {}
 
@@ -24,8 +23,6 @@ def download_and_save(url: str, file_path: "ExtendedPath", params: Optional[dict
     file_path.write(content)
 
     # Always sleep 10 seconds after every download according to the API requirements
-    sleep_time = 10 - (time.time() - start_time)
-    if sleep_time > 0:
-        time.sleep(sleep_time)
+    time.sleep(10)
     # Don't bother returning the response and just reload it from the file every time because the 10 second wait makes
     # the difference in performance negligible
