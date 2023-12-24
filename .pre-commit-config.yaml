@@ -17,32 +17,18 @@ repos:
       - id: check-yaml #Validate .pre-commit-config.yaml and other yaml files
       - id: sort-simple-yaml # Clean up .pre-commit-config.yaml and other yaml files
 
-      # Requirements.txt hooks
-      - id: requirements-txt-fixer
-
       # Compatibility hooks
       - id: check-case-conflict # Make sure files are safe for Windows
       - id: end-of-file-fixer # Make sure files end in a newline
       - id: mixed-line-ending # Clean up line endings to all be the same
       - id: fix-byte-order-marker # Remove UTF-8 byte order marker
 
-  # Trying to replace black with ruff
+  # Format and lint Python code
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.8
     hooks:
       # Run the linter.
       - id: ruff
+        args: [--fix]
       # Run the formatter.
       - id: ruff-format
-
-  # Run isort to sort Python imports
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-
-  # Run flake8 to check for linting errors
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8

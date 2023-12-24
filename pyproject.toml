@@ -1,26 +1,26 @@
 [tool.poetry]
-name = "ActualExclusives"
+name = "actualexclusives"
 version = "0.1.0"
 description = ""
 authors = ["ryn-cx <84663588+ryn-cx@users.noreply.github.com>"]
+license = "GNU GPLv3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+json-file = {git = "https://github.com/ryn-cx/json-file"}
 django = "^5.0"
-django-model-helpers = { git = "https://github.com/ryn-cx/django-model-helpers" }
-json-file = { git = "https://github.com/ryn-cx/json-file" }
+django-model-helpers = {git = "https://github.com/ryn-cx/django-model-helpers"}
 virtualenvwrapper = "^4.8.4"
-ruff = "^0.1.8"
 
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^6.1.0"
-pytest = "^7.4.3"
-pylint = "^3.0.3"
+ruff = "^0.1.9"
 pre-commit = "^3.6.0"
+pylint = "^3.0.3"
+pytest = "^7.4.3"
+djlint = "^1.34.1"
 django-types = "^0.19.1"
-djlint = "^1.34.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -29,16 +29,14 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 line-length = 120
 
-[tool.pylint]
-disable = [
-    "C0301", # line-too-long: Black makes this redundant
-    "E1101", # no-member: Black makes thie redundant and it sometimes has false positives
-    "E0307", # invalid-str-returned: Black makes this redundant and it sometimes has false positives
-    "E0611", # invalid-str-returned: Black makes this redundant and it sometimes has false positives
-    "E0401", # import-error: Black makes this redundant and it has false positives because it does not use PYTHONPATH
-    "C0114", # missing-module-docstring: So often these are just useless, only add them when they are useful
-    "C0115", # missing-class-docstring: So often these are just useless, only add them when they are useful
-    "C0116", # missing-function-docstring: So often these are just useless, only add them when they are useful
-    "E0601", # used-before-assignment: Pylance is more reliable because Pylint does not understand "if TYPE_CHECKING:"
-]
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["ANN101", "ANN102", "N804"]
+# ANN101 - missing-type-self - self doesn't need type hints because the type is known implicitly
+# ANN102 - missing-type-cls - cls doesn't need type hints because the type is known implicitly
+# N804 - non-pep604-annotation - Sometimes has false positives, and Pylance is more accurate
 
+[tool.ruff.extend-per-file-ignores]
+"test_*.py" = ["S101", "INP001"]
+# S101 - assert - Assert statements are fine in tests
+# INP001 - implicit-namespace-package - Tests are not packages and should not have __init__.py files
