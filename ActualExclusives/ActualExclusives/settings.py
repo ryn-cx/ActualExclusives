@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-from api_key import DJANGO_SECRET_KEY
+from api_key import DJANGO_ALLOWED_HOSTS, DJANGO_SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ SECRET_KEY = DJANGO_SECRET_KEY
 DEBUG = True
 
 # This should be all that is needed fornginx proxying
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 
 # Application definition
