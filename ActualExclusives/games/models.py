@@ -1,5 +1,5 @@
 from django.db import models
-from django_model_helpers import ModelWithIdAndTimestamp
+from great_django_family import ModelWithIdAndTimestamp
 
 
 class Genre(models.Model):

@@ -10,9 +10,9 @@ readme = "README.md"
 python = "^3.11"
 json-file = { git = "https://github.com/ryn-cx/json-file" }
 django = "^5.0"
-django-model-helpers = { git = "https://github.com/ryn-cx/django-model-helpers" }
 virtualenvwrapper = "^4.8.4"
 paved-path = { git = "https://github.com/ryn-cx/paved-path.git" }
+great-django-family = { git = "https://github.com/ryn-cx/great-django-family" }
 
 
 [tool.poetry.group.dev.dependencies]
