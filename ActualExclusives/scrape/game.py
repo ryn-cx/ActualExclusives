@@ -74,7 +74,7 @@ class GameManager:
         for platform in game_json_parsed["platforms"]:
             game_json_path = self.game_platform_json_path(platform["platform_id"])
             if game_json_path.outdated(minimum_info_timestamp):
-                download_type = "Updating" if game_json_path.exists() else "Downloading"
+                download_type = "Downloading Update" if game_json_path.exists() else "Downloading Initial"
 
                 logger.info(
                     "%s %s (%s) for %s (%s)",
