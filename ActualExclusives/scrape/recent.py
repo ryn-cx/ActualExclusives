@@ -96,6 +96,9 @@ def main() -> None:
 
     LastScrape.objects.create(datetime=datetime.now().astimezone())
 
+
+def import_recent() -> None:
+    """Import the downloaded recent games."""
     for date_folder in RECENT_FOLDER.iterdir():
         # Make sure file is at laeast 48 horus old to make sure I don't end up doing double downloads because of the 2
         # day buffer
@@ -112,5 +115,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    import_recent()
     # TODO: Actual updating, go through every json file, find outdated, update them, rename/move json file, ignore
     # buffer days etc
