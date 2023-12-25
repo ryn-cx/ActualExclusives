@@ -1,5 +1,4 @@
-"""
-WSGI config for ActualExclusives project.
+"""WSGI config for ActualExclusives project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

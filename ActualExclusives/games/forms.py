@@ -1,9 +1,13 @@
+"""Forms for the games."""
 from django import forms
 from django.forms import formset_factory
+
 from games.models import Country, Platform
 
 
 class SelectForm(forms.Form):
+    """Form for selecting platforms and countries."""
+
     YES_NO_CHOICES = (
         ("Yes", "Yes"),
         ("No", "No"),

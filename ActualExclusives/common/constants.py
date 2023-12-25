@@ -1,3 +1,4 @@
+"""Constants used throughout the project."""
 from __future__ import annotations
 
 from paved_path import PavedPath

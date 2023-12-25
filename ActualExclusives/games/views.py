@@ -1,3 +1,6 @@
+"""Game views."""
+from __future__ import annotations
+
 import datetime
 from typing import Any
 
@@ -11,6 +14,7 @@ from games.functions import form_parser
 
 @csrf_exempt
 def index(request: HttpRequest) -> HttpResponse:
+    """Index page."""
     if request.method == "GET":
         formset = SelectFormSet(request.GET)
         if not formset.is_valid():
@@ -22,7 +26,8 @@ def index(request: HttpRequest) -> HttpResponse:
 
 @csrf_exempt
 def games(request: HttpRequest) -> HttpResponse:
-    start = datetime.datetime.now()
+    """Results page."""
+    start = datetime.datetime.now().astimezone()
     # Manage invalid forms
     formset = SelectFormSet(request.GET)
     search_type = request.GET.get("search_type")
@@ -37,19 +42,18 @@ def games(request: HttpRequest) -> HttpResponse:
     games = form_parser(formset, search_type)[:1000]
 
     # TODO: Do all of this inside of the Django template instead of passing in JSON
-    output5: dict[int, Any] = {}
+    output: dict[int, Any] = {}
     for game in games:
-        output5[game.id] = {
+        output[game.id] = {
             "name": game.name,
             "platforms": {},
             "description": game.description,
             "image": game.image,
         }
         for platform in game.gameplatform_set.all():
-            output5[game.id]["platforms"][platform.platform.name] = []
+            output[game.id]["platforms"][platform.platform.name] = []
             for region in platform.gameplatformcountry_set.all():
-                output5[game.id]["platforms"][platform.platform.name] += [region.country.flag]
+                output[game.id]["platforms"][platform.platform.name] += [region.country.flag]
 
-    context_data = {"games": output5, "start": start}
-    output = render(request, "games/results.html", context_data)
-    return output
+    context_data = {"games": output, "start": start}
+    return render(request, "games/results.html", context_data)

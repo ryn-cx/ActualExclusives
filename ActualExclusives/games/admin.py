@@ -1,4 +1,6 @@
+"""Admin page for the games."""
 from django.contrib import admin
+
 from games.models import Country, Game, GameGenre, GamePlatform, GamePlatformCountry, Genre, LastScrape, Platform
 
 admin.site.register(Game)
