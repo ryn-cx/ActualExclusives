@@ -265,7 +265,7 @@ def and_form_parser(formset: BaseFormSet, intersection_set: set[int]) -> set[int
     """
     for form in formset:
         # Check if form is valid
-        if form.is_valid() and form.has_changed():
+        if form.is_valid():
             gp = GamePlatform.objects.all()
 
             if form.cleaned_data.get("platforms"):
@@ -293,7 +293,7 @@ def or_form_parser(formset: BaseFormSet, union_set: set[int]) -> set[int]:
     """
     for form in formset:
         # Check if form is valid
-        if form.is_valid() and form.has_changed():
+        if form.is_valid():
             gp = GamePlatform.objects
 
             if form.cleaned_data.get("platforms"):
