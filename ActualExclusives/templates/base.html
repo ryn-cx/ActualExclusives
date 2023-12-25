@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description"
               content="Find actual video games exclusives, not the lies and outdated information online.">
+        <meta name="keywords"
+              content="video games, exclusives, gaming, console, platform, country, region">
         <meta name="author" content="ryn.cx">
         <title>ActualExclusives.Com - Find Exclusive Video Games</title>
         <link rel="canonical" href="https://actualexclusives.com/">
@@ -256,24 +258,24 @@
                 <header class="pb-3 mb-4 border-bottom">
                     <span class="fs-4">
                         <text onclick="toggleStyles()">🎮</text>
-                        <a href="/" class="  text-body-emphasis text-decoration-none">ActualExclusives.Com</a>
+                        <a href="{% url 'index'}"
+                           class="  text-body-emphasis text-decoration-none">ActualExclusives.Com</a>
                     </span>
                 </header>
-                {% block content %}{% endblock %}
+                {% block content %}
+                {% endblock content %}
                 <div class="row align-items-md-stretch">
                     <div class="col-md-6">
                         <div class="h-100 p-5 text-bg-dark rounded-3">
                             <h2>Examples</h2>
                             <div class="list-group">
-                                <a href="index?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=NSgfB8HgMBu69MfwhEwXMWk5r1pkTOSUFYyx8uBskMly01atRWvE85FvX6UFG8ao&form-0-platforms=6&form-0-platform_include=Yes&form-0-platform_search_type=Exclusive&form-0-country_include=Yes&form-0-country_search_type=Exclusive"
+                                <a href="{% url 'index' %}?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=NSgfB8HgMBu69MfwhEwXMWk5r1pkTOSUFYyx8uBskMly01atRWvE85FvX6UFG8ao&form-0-platforms=6&form-0-platform_include=Yes&form-0-platform_search_type=Exclusive&form-0-country_include=Yes&form-0-country_search_type=Exclusive"
                                    class="list-group-item list-group-item-action">All games that are exclusive to the PlayStation</a>
-                                <a href="index?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=Kba3K7Yr0h65LQXZjecRRNhUKdgVxgnQChslhtSDysXxC5SWTwbydWCkgiLgkAFk&form-0-platforms=7&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-countries=5&form-0-country_include=Yes&form-0-country_search_type=Exclusive"
-                                   class="list-group-item list-group-item-action">All Playstation 2 games that where
-                                exclusive to Japan</a>
-                                <a href="index?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=yeTNXD1mmnHHJA9GNnBe7jNXYlpwhUKhv0vE4T4mlrtFh3c7xWCeXc5dxd16SIRN&form-0-platforms=6&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-countries=3&form-0-country_include=No&form-0-country_search_type=Or"
-                                   class="list-group-item list-group-item-action">All PS1 games that did not have a release
-                                in the United States (may be unreliable due to the data source).</a>
-                                <a href="index?form-TOTAL_FORMS=2&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=QaSG0NqA22NGydnN3zUyCDijOJl5mfqFNWux73tA16zE6GqeN8VyswAznBXFX3xb&form-0-platforms=288&form-0-platforms=289&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-country_include=No&form-0-country_search_type=Or&form-1-platforms=3&form-1-platforms=140&form-1-platform_include=No&form-1-platform_search_type=Or&form-1-country_include=Yes&form-1-country_search_type=Exclusive"
+                                <a href="{% url 'index' %}?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=Kba3K7Yr0h65LQXZjecRRNhUKdgVxgnQChslhtSDysXxC5SWTwbydWCkgiLgkAFk&form-0-platforms=7&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-countries=5&form-0-country_include=Yes&form-0-country_search_type=Exclusive"
+                                   class="list-group-item list-group-item-action">All Playstation 2 games that were exclusive to Japan</a>
+                                <a href="{% url 'index' %}?form-TOTAL_FORMS=1&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=yeTNXD1mmnHHJA9GNnBe7jNXYlpwhUKhv0vE4T4mlrtFh3c7xWCeXc5dxd16SIRN&form-0-platforms=6&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-countries=3&form-0-country_include=No&form-0-country_search_type=Or"
+                                   class="list-group-item list-group-item-action">All PS1 games that did not have a release in the United States (may be unreliable due to the data source).</a>
+                                <a href="{% url 'index' %}?form-TOTAL_FORMS=2&form-INITIAL_FORMS=0&form-MIN_NUM_FORMS=0&form-MAX_NUM_FORMS=1000&csrfmiddlewaretoken=QaSG0NqA22NGydnN3zUyCDijOJl5mfqFNWux73tA16zE6GqeN8VyswAznBXFX3xb&form-0-platforms=288&form-0-platforms=289&form-0-platform_include=Yes&form-0-platform_search_type=Or&form-0-country_include=No&form-0-country_search_type=Or&form-1-platforms=3&form-1-platforms=140&form-1-platform_include=No&form-1-platform_search_type=Or&form-1-country_include=Yes&form-1-country_search_type=Exclusive"
                                    class="list-group-item list-group-item-action">
                                 All games on the Xbox Series X or Playstation 5 that are not available on Windows.</a>
                             </div>
