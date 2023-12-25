@@ -11,8 +11,8 @@ from __future__ import annotations
 import os
 
 import django
-from extended_path import ExtendedPath
+from paved_path import PavedPath
 
-file_name = ExtendedPath(__file__).parent.name
+file_name = PavedPath(__file__).parent.name
 os.environ["DJANGO_SETTINGS_MODULE"] = f"{file_name}.settings"
 django.setup()

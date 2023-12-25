@@ -5,12 +5,13 @@ import urllib.request
 from typing import TYPE_CHECKING, Optional
 
 from api_key import API_KEY
+from json_file import JSONFile
 
 if TYPE_CHECKING:
-    from extended_path import ExtendedPath
+    from paved_path import PavedPath
 
 
-def download_and_save(url: str, file_path: "ExtendedPath", params: Optional[dict[str, str | int]] = None) -> None:
+def download_and_save(url: str, file_path: JSONFile, params: Optional[dict[str, str | int]] = None) -> None:
     if not params:
         params = {}
 
