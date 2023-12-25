@@ -97,7 +97,8 @@ def main() -> None:
     LastScrape.objects.create(datetime=datetime.now().astimezone())
 
     for date_folder in RECENT_FOLDER.iterdir():
-        # Make sure file is at laeast 48 horus old
+        # Make sure file is at laeast 48 horus old to make sure I don't end up doing double downloads because of the 2
+        # day buffer
         if date_folder.aware_mtime() < (datetime.now().astimezone() - timedelta(days=2)).astimezone():
             for file_path in date_folder.iterdir():
                 json_file = JSONFile(file_path)
@@ -105,8 +106,8 @@ def main() -> None:
                 for game in parsed_json["games"]:
                     game_manager = GameManager(game["game_id"])
                     game_manager.extract_game_json(game, json_file.aware_mtime())
-                    game_manager.download_game_platforms()
-                    game_manager.import_game()
+                    game_manager.download_game_platforms(json_file.aware_mtime())
+                    game_manager.import_game(json_file.aware_mtime())
 
 
 if __name__ == "__main__":
