@@ -61,7 +61,7 @@ class GameManager:
         """Download the game information."""
         game_json_path = self.game_json_path
         if game_json_path.outdated(minimum_info_timestamp):
-            download_type = "Updating" if game_json_path.exists() else "Downloading"
+            download_type = "Downloading Update" if game_json_path.exists() else "Downloading Initial"
 
             logger.info("%s %s", download_type, self.game_id)
 
