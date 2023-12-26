@@ -3,7 +3,7 @@ name = "actualexclusives"
 version = "0.1.0"
 description = ""
 authors = ["ryn-cx <84663588+ryn-cx@users.noreply.github.com>"]
-license = "GNU GPLv3"
+license = "GNU AGPLv3"
 readme = "README.md"
 
 [tool.poetry.dependencies]
