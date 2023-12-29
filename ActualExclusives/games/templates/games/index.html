@@ -21,13 +21,13 @@
                                                 // Build the ID dynamically
                                                 var platformsId = '#id_form-' + i + '-platforms';
                                                 var countriesId = '#id_form-' + i + '-countries';
-                                    
+
                                                 // Modify the platforms element
                                                 $(platformsId).attr('data-actions-box', 'true');
                                                 $(platformsId).attr('data-live-search', 'true');
                                                 $(platformsId).attr('multiple', 'true');
                                                 $(platformsId).selectpicker();
-                                    
+
                                                 // Modify the countries element
                                                 $(countriesId).attr('data-actions-box', 'true');
                                                 $(countriesId).attr('data-live-search', 'true');
@@ -49,22 +49,22 @@
                                 $('#add_more').click(function() {
                                 var form_number = $('#id_form-TOTAL_FORMS').val();
                                 $('#col_holder').append($('#empty_form').html().replace(/__prefix__/g, form_number));
-                            
+
                                 var platforms_string = '#id_form-' + form_number + '-platforms';
                                 $(platforms_string).attr('data-actions-box', 'true');
                                 $(platforms_string).attr('data-live-search', 'true');
                                 $(platforms_string).attr('multiple', 'true');
                                 $(platforms_string).selectpicker();
-                            
+
                                 var countries_string = '#id_form-' + form_number + '-countries';
                                 $(countries_string).attr('data-actions-box', 'true');
                                 $(countries_string).attr('data-live-search', 'true');
                                 $(countries_string).attr('multiple', 'true');
                                 $(countries_string).selectpicker();
-                            
+
                                 $('#id_form-TOTAL_FORMS').val(function(i, oldval) {
                                     return parseInt(oldval, 10) + 1;
-                                });    
+                                });
                                 });
             </script>
         </form>

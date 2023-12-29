@@ -12,6 +12,7 @@ from common.constants import BASE_DIR, DOWNLOADED_FILES_DIR
 from django.db import transaction
 from games.models import Country, Game, GameGenre, GamePlatform, GamePlatformCountry, Genre, Platform
 from json_file import JSONFile
+
 from scrape.download_and_save import download_and_save
 
 if TYPE_CHECKING:
