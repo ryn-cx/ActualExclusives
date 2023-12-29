@@ -6678,6 +6678,9 @@
     {
         "id": 128,
         "name": "Macau S.A.R.",
+        "alternative_names": [
+            "Macau"
+        ],
         "iso3": "MAC",
         "iso2": "MO",
         "numeric_code": "446",
