@@ -1,4 +1,4 @@
-"""Forms for the games."""
+"""Form for the games app."""
 from django import forms
 from django.forms import formset_factory
 

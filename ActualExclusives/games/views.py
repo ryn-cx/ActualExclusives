@@ -1,4 +1,4 @@
-"""Game views."""
+"""Views for the games app."""
 from __future__ import annotations
 
 import datetime

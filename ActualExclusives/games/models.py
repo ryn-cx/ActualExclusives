@@ -1,4 +1,4 @@
-"""Models for games."""
+"""Models for the games app."""
 from django.db import models
 from great_django_family import ModelWithIdAndTimestamp
 

@@ -1,4 +1,4 @@
-"""Game URL Configuration."""
+"""URLs for the games app."""
 from django.urls import path
 
 from games import views

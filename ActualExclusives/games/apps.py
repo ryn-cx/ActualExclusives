@@ -1,4 +1,4 @@
-"""App config so Django can load games."""
+"""App config for the games app."""
 from django.apps import AppConfig
 
 
