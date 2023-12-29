@@ -1,6 +1,6 @@
 """Models for the games app."""
 from django.db import models
-from great_django_family import ModelWithIdAndTimestamp
+from great_django_family import ModelWithId, ModelWithTimestamps
 
 
 class Genre(models.Model):
@@ -40,7 +40,7 @@ class Country(models.Model):
         return self.name
 
 
-class Game(ModelWithIdAndTimestamp):
+class Game(ModelWithTimestamps):
     """Game model."""
 
     id = models.IntegerField(primary_key=True)  # noqa: A003 - Name of id is good
@@ -55,7 +55,7 @@ class Game(ModelWithIdAndTimestamp):
         return self.name
 
 
-class GamePlatform(models.Model):
+class GamePlatform(ModelWithId):
     """GamePlatform model."""
 
     gameplatformcountry_set: models.QuerySet["GamePlatformCountry"]
@@ -68,7 +68,7 @@ class GamePlatform(models.Model):
         return f"{self.game} - {self.platform}"
 
 
-class GamePlatformCountry(models.Model):
+class GamePlatformCountry(ModelWithId):
     """GamePlatformCountry model."""
 
     game_platform = models.ForeignKey(GamePlatform, on_delete=models.CASCADE)
@@ -79,7 +79,7 @@ class GamePlatformCountry(models.Model):
         return f"{self.game_platform} - {self.country}"
 
 
-class GameGenre(models.Model):
+class GameGenre(ModelWithId):
     """GameGenre model."""
 
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
@@ -90,10 +90,9 @@ class GameGenre(models.Model):
         return f"{self.game} - {self.genre}"
 
 
-class LastScrape(models.Model):
+class LastScrape(ModelWithId):
     """LastScrape model."""
 
-    id = models.AutoField(primary_key=True)  # noqa: A003 - Name of id is good
     datetime = models.DateTimeField()
 
     def __str__(self) -> str:
