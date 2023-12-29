@@ -29,6 +29,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 120
+# Ignore Django migration files for formatting because they are auto-generated
+extend-exclude = ["migrations"]
 
 [tool.ruff.lint]
 select = ["ALL"]
