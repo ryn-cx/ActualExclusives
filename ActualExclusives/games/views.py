@@ -38,22 +38,8 @@ def games(request: HttpRequest) -> HttpResponse:
     if not search_type:
         return HttpResponse("Invalid Form")
 
-    # Truncate results to 1,000 to avoid overloading the web browser
+    # Truncate results to 1,000 to avoid people using the site as a database
     games = form_parser(formset, search_type)[:1000]
 
-    # TODO: Do all of this inside of the Django template instead of passing in JSON
-    output: dict[int, Any] = {}
-    for game in games:
-        output[game.id] = {
-            "name": game.name,
-            "platforms": {},
-            "description": game.description,
-            "image": game.image,
-        }
-        for platform in game.gameplatform_set.all():
-            output[game.id]["platforms"][platform.platform.name] = []
-            for region in platform.gameplatformcountry_set.all():
-                output[game.id]["platforms"][platform.platform.name] += [region.country.flag]
-
-    context_data = {"games": output, "start": start}
+    context_data = {"games": games, "start": start}
     return render(request, "games/results.html", context_data)

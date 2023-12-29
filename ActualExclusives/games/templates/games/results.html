@@ -2,19 +2,19 @@
 {% block content %}
     <div class="p-5 mb-4 bg-body-tertiary rounded-3">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for game_id, game_data in games.items %}
+            {% for game in games %}
                 <div class="col">
                     <div class="card">
-                        <img src="{{ game_data.image }}" alt="{{ game }}" class="card-img-top">
+                        <img src="{{ game.image }}" alt="{{ game }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="https://www.mobygames.com/game/{{ game_id }}/">{{ game_data.name }}</a>
+                                <a href="https://www.mobygames.com/game/{{ game_id }}/">{{ game.name }}</a>
                             </h5>
                             <p class="card-text">
-                                {% for console, countries in game_data.platforms.items %}
-                                    {{ console }}:
-                                    {% for country in countries %}
-                                        {{ country }}
+                                {% for game_platform in game.gameplatform_set.all %}
+                                    {{ game_platform.platform }}:
+                                    {% for game_platform_country in game_platform.gameplatformcountry_set.all %}
+                                        {{ game_platform_country.country.flag }}
                                         {{ ' ' }}
                                     {% endfor %}
                                     <br>
