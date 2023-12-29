@@ -16,7 +16,7 @@ PLATFORMS_JSON_PATH = JSONFile(DOWNLOADED_FILES_DIR) / "platforms.json"
 
 
 def get_platforms():
-    minimum_timestam = datetime.datetime.now() - datetime.timedelta(days=1)
+    minimum_timestam = datetime.datetime.now().astimezone() - datetime.timedelta(days=1)
     if PLATFORMS_JSON_PATH.outdated(minimum_timestam):
         logger.info("Downloaded platforms.json")
         download_and_save(PLATFORMS_URL, PLATFORMS_JSON_PATH)
@@ -28,7 +28,8 @@ def import_platforms():
 
 
 def import_platform(platform_id: int, platform_name: str):
-    logger.info(f"Importing platform {platform_name} ({platform_id})")
+    msg = f"Importing platform {platform_name} ({platform_id})"
+    logger.info(msg)
     Platform.objects.get_or_create(name=platform_name, id=platform_id)
 
 
