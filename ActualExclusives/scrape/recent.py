@@ -9,6 +9,7 @@ from common.constants import DOWNLOADED_FILES_DIR
 from games.models import LastScrape
 from json_file import JSONFile
 from paved_path import PavedPath
+
 from scrape.download_and_save import download_and_save
 from scrape.game import GameManager
 
@@ -70,7 +71,7 @@ def newest_scrape_from_folder(recent_dir: PavedPath, folder_index: int = 0) -> d
     return None
 
 
-def main() -> None:
+def download_recent() -> None:
     """Download the list of recent games from MobyGames and import it."""
     current_datetime = RECENT_FOLDER / datetime.now().astimezone()
 
@@ -100,7 +101,7 @@ def main() -> None:
 def import_recent() -> None:
     """Import the downloaded recent games."""
     for date_folder in RECENT_FOLDER.iterdir():
-        # Make sure file is at laeast 48 horus old to make sure I don't end up doing double downloads because of the 2
+        # Make sure file is at least 48 hours old to make sure I don't end up doing double downloads because of the 2
         # day buffer
         if date_folder.aware_mtime() < (datetime.now().astimezone() - timedelta(days=2)).astimezone():
             for file_path in date_folder.iterdir():
@@ -114,7 +115,5 @@ def import_recent() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    download_recent()
     import_recent()
-    # TODO: Actual updating, go through every json file, find outdated, update them, rename/move json file, ignore
-    # buffer days etc

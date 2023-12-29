@@ -1,11 +1,12 @@
-"""Functions to import platforms."""
+"""Import all of the platforms."""
 import datetime
 import logging
 
-import _activate_django  # noqa # type: ignore - This modifies global values
+import _activate_django  # type: ignore # noqa: F401, PGH003 - Modified global path
 from common.constants import DOWNLOADED_FILES_DIR
 from games.models import Platform
 from json_file import JSONFile
+
 from scrape.download_and_save import download_and_save
 
 logging.getLogger().setLevel(logging.INFO)
@@ -40,6 +41,7 @@ def import_platform(platform_id: int, platform_name: str) -> None:
 
 
 def main() -> None:
+    """Import all platforms."""
     get_platforms()
     import_platforms()
 

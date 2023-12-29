@@ -1,4 +1,4 @@
-"""Class for managing game information."""
+"""Manages game information."""
 from __future__ import annotations
 
 import datetime
@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class GameManager:
-    """Class for managing game information."""
+    """Manages game information."""
 
     def __init__(self, game_id: int) -> None:
         """Initialize the game manager."""
@@ -61,7 +61,7 @@ class GameManager:
         """Download the game information."""
         game_json_path = self.game_json_path
         if game_json_path.outdated(minimum_info_timestamp):
-            download_type = "Downloading Update" if game_json_path.exists() else "Downloading Initial"
+            download_type = "Downloading Updated Files" if game_json_path.exists() else "Downloading Initial Files"
 
             logger.info("%s %s", download_type, self.game_id)
 
@@ -74,7 +74,7 @@ class GameManager:
         for platform in game_json_parsed["platforms"]:
             game_json_path = self.game_platform_json_path(platform["platform_id"])
             if game_json_path.outdated(minimum_info_timestamp):
-                download_type = "Downloading Update" if game_json_path.exists() else "Downloading Initial"
+                download_type = "Downloading Updated File" if game_json_path.exists() else "Downloading Initial File"
 
                 logger.info(
                     "%s %s (%s) for %s (%s)",
@@ -104,10 +104,10 @@ class GameManager:
 
         # Check if game is already imported
         if game_object and game_object.is_up_to_date(info_timestamp, info_modified_timestamp):
-            logger.info("Importing::Up To Date: %s", game_string)
+            logger.info("Data Up To Date: %s", game_string)
             return
 
-        logger.info("Importing::Outdated: %s", game_string)
+        logger.info("Data Outdated: %s", game_string)
 
         # Can't do this using .get because sample_cover returns None not an empty dict
         image_url = None if game["sample_cover"] is None else game["sample_cover"]["thumbnail_image"]

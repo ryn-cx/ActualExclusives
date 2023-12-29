@@ -1,4 +1,4 @@
-"""Download and import the list of games for a platform."""
+"""Download and import the games for a platform."""
 from __future__ import annotations
 
 import logging
@@ -7,6 +7,7 @@ import _activate_django  # type: ignore # noqa: F401, PGH003 - Modified global p
 from common.constants import BASE_DIR, DOWNLOADED_FILES_DIR
 from games.models import Platform
 from json_file import JSONFile
+
 from scrape.download_and_save import download_and_save
 from scrape.game import GameManager
 
